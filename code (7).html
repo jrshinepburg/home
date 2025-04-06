@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.R. Shine - Unleash the Shine</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <!-- Font Awesome Icons via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Animate On Scroll (AOS) Library via CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- SwiperJS CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- Fancybox CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Styles */
+        body { font-family: 'Poppins', sans-serif; background-color: #111827; color: #d1d5db; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        .animated-gradient { background: linear-gradient(-45deg, #0a1a30, #1e3a5f, #111827, #0e2a47); background-size: 400% 400%; animation: gradientBG 15s ease infinite; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .navbar { transition: background-color 0.3s ease, backdrop-filter 0.3s ease; }
+        .navbar-scrolled { background-color: rgba(17, 24, 39, 0.8); backdrop-filter: blur(10px); --webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .btn-shine { position: relative; overflow: hidden; transition: color 0.3s ease-in-out; }
+        .btn-shine::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent); transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .btn-shine:hover { color: #fff; }
+        .btn-shine:hover::before { left: 100%; }
+        .btn-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
+        .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2); }
+
+        /* Swiper Customization */
+        .swiper-button-next, .swiper-button-prev { color: #3b82f6; background-color: rgba(17, 24, 39, 0.5); border-radius: 50%; width: 44px; height: 44px; transition: background-color 0.3s ease; }
+        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(59, 130, 246, 0.7); color: #fff; }
+        .swiper-button-next::after, .swiper-button-prev::after { font-size: 20px; font-weight: bold; }
+        .swiper-pagination-bullet { background-color: #9ca3af; opacity: 0.7; transition: background-color 0.3s ease, opacity 0.3s ease; }
+        .swiper-pagination-bullet-active { background-color: #3b82f6; opacity: 1; }
+        .swiper-slide img { display: block; width: 100%; height: auto; max-height: 85vh; object-fit: contain; border-radius: 0.5rem; cursor: pointer; }
+         .swiper-slide a { display: block; }
+
+        /* Fancybox Customization */
+        .fancybox__backdrop { background: rgba(17, 24, 39, 0.9); }
+        .fancybox__toolbar { background: rgba(31, 41, 55, 0.8); }
+        .fancybox__button { color: #d1d5db; }
+        .fancybox__button:hover { color: #fff; background: #3b82f6; }
+
+
+        /* FAQ Styles */
+        details > summary { list-style: none; cursor: pointer; padding: 1rem; background-color: #1f2937; border-radius: 8px; transition: background-color 0.2s ease; position: relative; margin-bottom: 0.5rem; }
+        details > summary:hover { background-color: #374151; }
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); transition: transform 0.3s ease; }
+        details[open] > summary::after { transform: translateY(-50%) rotate(180deg); }
+        details > div { padding: 1rem; background-color: #1f2937; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; margin-top: -0.5rem; margin-bottom: 0.5rem; border-top: 1px solid #374151; }
+
+        /* Preloader Styles */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #111827; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s ease-out; opacity: 1; visibility: visible; }
+        #preloader.hidden { opacity: 0; visibility: hidden; }
+        .spinner { width: 60px; height: 60px; border: 5px solid rgba(59, 130, 246, 0.3); border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader -->
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header & Navbar -->
+    <header id="navbar" class="navbar fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8">
+        <nav class="container mx-auto h-20 flex items-center justify-between">
+            <a href="#" class="text-3xl font-extrabold text-white tracking-tight" data-aos="fade-right">J.R. SHINE</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="text-gray-300 hover:text-blue-400 transition duration-300">Home</a>
+                <a href="#services" class="text-gray-300 hover:text-blue-400 transition duration-300">Services</a>
+                <a href="#gallery" class="text-gray-300 hover:text-blue-400 transition duration-300">Gallery</a>
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-block btn-shine bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">Book Now</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800/90 backdrop-blur-sm rounded-b-lg">
+            <a href="#hero" class="block py-3 px-4 text-gray-200 hover:bg-blue-600 hover:text-white transition duration-200">Home</a>
+            <a href="#services" class="block py-3 px-4 text-gray-200 hover:bg-blue-600 hover:text-white transition duration-200">Services</a>
+            <a href="#gallery" class="block py-3 px-4 text-gray-200 hover:bg-blue-600 hover:text-white transition duration-200">Gallery</a>
+            <a href="#about" class="block py-3 px-4 text-gray-200 hover:bg-blue-600 hover:text-white transition duration-200">About</a>
+            <a href="#contact" class="block py-3 px-4 text-gray-200 hover:bg-blue-600 hover:text-white transition duration-200">Contact</a>
+            <a href="#contact" class="block py-3 px-4 text-center btn-shine bg-blue-600 text-white font-semibold rounded-lg my-3 mx-4">Book Now</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden animated-gradient pt-20">
+            <div class="absolute inset-0 bg-black opacity-30 z-0"></div>
+            <div class="container mx-auto px-4 z-10 relative">
+                <img src="logo.png" alt="J.R. Shine Logo" class="h-64 w-auto mx-auto block mb-8" data-aos="fade-down">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 drop-shadow-xl" data-aos="fade-down" data-aos-delay="200">UNLEASH YOUR CAR'S <span class="text-blue-400">INNER BEAST</span></h1>
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">Experience meticulous automotive detailing that brings back the showroom shine and protects your investment.</p>
+                <div data-aos="zoom-in" data-aos-delay="600">
+                    <a href="#services" class="btn-shine btn-pulse bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-xl transition duration-300 transform hover:scale-105 inline-block">Explore Services <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+            <a href="#services" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-4xl animate-bounce z-10"><i class="fas fa-chevron-down"></i></a>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-800/50 backdrop-blur-sm">
+             <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-white mb-4" data-aos="fade-up">Our Services</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Premium care for your vehicle, inside and out.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="service-card bg-gray-900 rounded-xl shadow-2xl p-8 border border-gray-700 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100"> <div class="text-blue-500 text-5xl mb-4"><i class="fas fa-car-side"></i></div> <h3 class="text-2xl font-semibold text-white mb-3">Interior Detail</h3> <p class="text-3xl font-bold text-blue-400 mb-4">$50</p> <p class="text-gray-400 mb-6 flex-grow">Deep cleaning of carpets, seats, dashboard, and all interior surfaces.</p> <a href="#contact" class="btn-shine w-full mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Book Now</a> </div>
+                    <div class="service-card bg-gray-900 rounded-xl shadow-2xl p-8 border border-gray-700 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200"> <div class="text-blue-500 text-5xl mb-4"><i class="fas fa-soap"></i></div> <h3 class="text-2xl font-semibold text-white mb-3">Exterior Detail</h3> <p class="text-3xl font-bold text-blue-400 mb-4">$50</p> <p class="text-gray-400 mb-6 flex-grow">Thorough hand wash, dry, and cleaning of exterior surfaces for a brilliant shine.</p> <a href="#contact" class="btn-shine w-full mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Book Now</a> </div>
+                    <div class="service-card bg-gray-900 rounded-xl shadow-2xl p-8 border border-gray-700 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300"> <div class="text-blue-500 text-5xl mb-4"><i class="fas fa-spray-can-sparkles"></i></div> <h3 class="text-2xl font-semibold text-white mb-3">Wax Application</h3> <p class="text-3xl font-bold text-blue-400 mb-4">$20</p> <p class="text-gray-400 mb-6 flex-grow">Protective wax coating applied for added gloss and paint protection.</p> <a href="#contact" class="btn-shine w-full mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Book Now</a> </div>
+                    <div class="service-card bg-gray-900 rounded-xl shadow-2xl p-8 border border-gray-700 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="400"> <div class="text-blue-500 text-5xl mb-4"><i class="fas fa-circle-notch"></i></div> <h3 class="text-2xl font-semibold text-white mb-3">Tire Shine</h3> <p class="text-3xl font-bold text-blue-400 mb-4">$15</p> <p class="text-gray-400 mb-6 flex-grow">Cleaning and dressing tires for a clean, dark, finished look.</p> <a href="#contact" class="btn-shine w-full mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Book Now</a> </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Carousel Section -->
+        <section id="gallery" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Our Work Showcase</h2>
+                <div class="swiper gallery-swiper max-w-5xl mx-auto relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"> <a href="pic1.jpg" data-fancybox="gallery" data-caption="Showcase Image 1"><img src="pic1.jpg" alt="Showcase Image 1"></a> </div>
+                        <div class="swiper-slide"> <a href="pic2.jpg" data-fancybox="gallery" data-caption="Showcase Image 2"><img src="pic2.jpg" alt="Showcase Image 2"></a> </div>
+                        <div class="swiper-slide"> <a href="pic3.jpg" data-fancybox="gallery" data-caption="Showcase Image 3"><img src="pic3.jpg" alt="Showcase Image 3"></a> </div>
+                        <div class="swiper-slide"> <a href="pic4.jpg" data-fancybox="gallery" data-caption="Showcase Image 4"><img src="pic4.jpg" alt="Showcase Image 4"></a> </div>
+                        <div class="swiper-slide"> <a href="pic5.jpg" data-fancybox="gallery" data-caption="Showcase Image 5"><img src="pic5.jpg" alt="Showcase Image 5"></a> </div>
+                    </div>
+                    <div class="swiper-pagination mt-8 relative bottom-0"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="about" class="py-20 bg-gray-800/50 backdrop-blur-sm">
+             <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Why J.R. Shine?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                    <div data-aos="zoom-in" data-aos-delay="100"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-medal text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Unmatched Quality</h3> <p class="text-gray-400">We treat every vehicle like our own, using only the best products and meticulous techniques.</p> </div>
+                     <div data-aos="zoom-in" data-aos-delay="200"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-clock text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Convenient Service</h3> <p class="text-gray-400">Flexible scheduling and mobile options (if applicable) to fit your busy life.</p> </div>
+                     <div data-aos="zoom-in" data-aos-delay="300"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-leaf text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Eco-Friendly Options</h3> <p class="text-gray-400">We utilize water-saving techniques and eco-conscious products where possible.</p> </div>
+                    <div data-aos="zoom-in" data-aos-delay="400"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-thumbs-up text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Customer Satisfaction</h3> <p class="text-gray-400">Your happiness is our priority. We strive for 5-star reviews every time.</p> </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Our Meticulous Process</h2>
+                <div class="relative">
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-500/30 transform -translate-x-1/2"></div>
+                    <div class="space-y-16">
+                         <div class="relative flex flex-col md:flex-row items-center" data-aos="fade-right"> <div class="md:w-1/2 md:pr-8 text-center md:text-right"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 1: Assessment & Prep</h3> <p class="text-gray-300">We inspect your vehicle's condition and carefully prepare surfaces for cleaning, masking sensitive areas.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-search text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pl-8"></div> </div>
+                         <div class="relative flex flex-col md:flex-row-reverse items-center" data-aos="fade-left"> <div class="md:w-1/2 md:pl-8 text-center md:text-left"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 2: Deep Cleaning</h3> <p class="text-gray-300">Thorough exterior wash, decontamination (clay bar), and meticulous interior vacuuming and scrubbing.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-soap text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pr-8"></div> </div>
+                         <div class="relative flex flex-col md:flex-row items-center" data-aos="fade-right"> <div class="md:w-1/2 md:pr-8 text-center md:text-right"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 3: Refinement & Protection</h3> <p class="text-gray-300">Polishing (if needed), applying wax, sealant, or ceramic coating. Conditioning interior surfaces.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-shield-alt text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pl-8"></div> </div>
+                         <div class="relative flex flex-col md:flex-row-reverse items-center" data-aos="fade-left"> <div class="md:w-1/2 md:pl-8 text-center md:text-left"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 4: Final Touches</h3> <p class="text-gray-300">Tire dressing, window perfection, final wipe-down, and quality inspection for flawless results.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-check-double text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pr-8"></div> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-gray-800/50 backdrop-blur-sm">
+            <div class="container mx-auto px-4 max-w-4xl">
+                 <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+                 <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                    <details> <summary class="text-lg font-semibold text-white">How long does a detail take?</summary> <div class="text-gray-300"> The duration depends on the service(s) chosen and the vehicle's condition. Basic services might take 1-2 hours, while combined or more intensive details can take longer. We'll provide an estimate when you book. </div> </details>
+                     <details> <summary class="text-lg font-semibold text-white">Do I need to bring my car to you?</summary> <div class="text-gray-300"> We offer both drop-off service at our location [Placeholder: Mention if Mobile Available] and potentially mobile detailing services where we come to you (subject to location and service type). Please inquire when booking. </div> </details>
+                    <details> <summary class="text-lg font-semibold text-white">What's the benefit of waxing?</summary> <div class="text-gray-300"> Wax adds a layer of protection to your paint against environmental contaminants, UV rays, and minor scratches. It also enhances gloss and makes washing easier. </div> </details>
+                    <details> <summary class="text-lg font-semibold text-white">How often should I get my car detailed?</summary> <div class="text-gray-300"> This varies based on usage, storage, and personal preference. We generally recommend a full interior/exterior detail every 3-6 months, with washes/waxes more frequently as needed. </div> </details>
+                     <details> <summary class="text-lg font-semibold text-white">What payment methods do you accept?</summary> <div class="text-gray-300"> [Placeholder: List payment methods] We accept cash, major credit cards (Visa, MasterCard, AMEX), and potentially digital payments like Zelle or Venmo. Please confirm when booking. </div> </details>
+                 </div>
+            </div>
+        </section>
+
+        <!-- == MODIFIED Contact Section == -->
+        <section id="contact" class="py-20 bg-gray-900 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M0 40L40 0H20L0 20M40 40V20L20 40\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Ready to Shine? Book Your Detail!</h2>
+                <!-- Centered Form Container -->
+                <div class="w-full lg:w-2/3 mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Form using mailto: action -->
+                    <form action="mailto:jrshinepburg@gmail.com?subject=Website%20Detailing%20Inquiry" method="post" enctype="text/plain" class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
+                         <div class="mb-5">
+                             <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Your Name</label>
+                             <input type="text" id="name" name="Name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="John Doe" required>
+                         </div>
+                        <div class="mb-5">
+                            <label for="service" class="block mb-2 text-sm font-medium text-gray-300">Service Interested In</label>
+                            <select id="service" name="Service_Interest" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400">
+                                 <option selected value="Not Specified">Choose a service</option>
+                                 <option value="Interior Detail ($50)">Interior Detail ($50)</option>
+                                 <option value="Exterior Detail ($50)">Exterior Detail ($50)</option>
+                                 <option value="Wax Application ($20)">Wax Application ($20)</option>
+                                 <option value="Tire Shine ($15)">Tire Shine ($15)</option>
+                                 <option value="Multiple/Quote">Multiple Services / Quote</option>
+                                 <option value="Other Inquiry">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Your Message</label>
+                            <textarea id="message" name="Message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="Tell us about your car, preferred dates/times, or ask a question..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-shine bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-800 transition duration-300">
+                            Send Inquiry via Email <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            Clicking 'Send' should open your default email application (like Outlook, Apple Mail, Gmail app) with the details pre-filled.
+                            <br> <strong class="text-gray-400">If nothing happens, please ensure you have a default email client configured in your browser or operating system settings.</strong>
+                            <br> Alternatively, you can manually email us at <a href="mailto:jrshinepburg@gmail.com" class="text-blue-400 hover:underline">jrshinepburg@gmail.com</a>.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- == END MODIFIED Contact Section == -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="container mx-auto px-4 text-center">
+             <a href="#" class="mb-4 inline-block"><img src="logo.png" alt="J.R. Shine Logo" class="h-12 w-auto mx-auto"></a>
+            <div class="flex justify-center space-x-6 mb-6">
+                 <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-blue-500 transition duration-300 text-2xl"><i class="fab fa-facebook-f"></i></a>
+                 <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-pink-500 transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
+                 <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-sky-400 transition duration-300 text-2xl"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="text-sm">© <span id="current-year"></span> J.R. Shine. All Rights Reserved. Website by [Your Name/Your Brother's Friend].</p>
+             <p class="text-xs mt-2">Crafted with <i class="fas fa-heart text-red-500"></i> & lots of <i class="fas fa-code text-blue-400"></i></p>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <script>
+        // AOS Initialization
+        AOS.init({ duration: 800, once: false });
+
+        // Particle Effect Script (Minified)
+        const canvas=document.getElementById('particle-canvas'),ctx=canvas.getContext('2d');let particles=[],canvasWidth,canvasHeight;function resizeCanvas(){canvasWidth=canvas.width=window.innerWidth;canvasHeight=canvas.height=window.innerHeight}class Particle{constructor(){this.x=Math.random()*canvasWidth;this.y=Math.random()*canvasHeight;this.size=Math.random()*2+1;this.speedX=Math.random()*1-0.5;this.speedY=Math.random()*1-0.5;this.opacity=Math.random()*0.5+0.1;this.color=`rgba(59, 130, 246, ${this.opacity})`}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0)this.x=canvasWidth;if(this.x>canvasWidth)this.x=0;if(this.y<0)this.y=canvasHeight;if(this.y>canvasHeight)this.y=0}draw(){ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill()}}function initParticles(){particles=[];const t=Math.floor(canvasWidth*canvasHeight/15e3);for(let i=0;i<t;i++)particles.push(new Particle)}function animateParticles(){ctx.clearRect(0,0,canvasWidth,canvasHeight);particles.forEach(t=>{t.update();t.draw()});requestAnimationFrame(animateParticles)}
+
+        // Navbar Scroll Effect
+        const navbar=document.getElementById('navbar');window.onscroll=function(){window.pageYOffset>50?navbar.classList.add("navbar-scrolled"):navbar.classList.remove("navbar-scrolled")};
+
+        // Mobile Menu Toggle
+        const mobileMenuButton=document.getElementById('mobile-menu-button'),mobileMenu=document.getElementById('mobile-menu');mobileMenuButton.addEventListener('click',()=>{mobileMenu.classList.toggle('hidden')});mobileMenu.querySelectorAll('a').forEach(t=>{t.addEventListener('click',()=>{mobileMenu.classList.add('hidden')})});
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(t=>{t.addEventListener('click',function(e){const o=this.getAttribute('href');if(o.length>1&&document.querySelector(o)){e.preventDefault();document.querySelector(o).scrollIntoView({behavior:'smooth'});mobileMenu.classList.contains('hidden')||mobileMenu.classList.add('hidden')}else"#"===o&&(e.preventDefault(),window.scrollTo({top:0,behavior:'smooth'}),mobileMenu.classList.contains('hidden')||mobileMenu.classList.add('hidden'))})});
+
+        // Set Current Year
+        document.getElementById('current-year').textContent=(new Date).getFullYear();
+
+        // Preloader & Particle Init
+        window.addEventListener('load',()=>{const t=document.getElementById('preloader');resizeCanvas();initParticles();animateParticles();window.addEventListener('resize',()=>{resizeCanvas();initParticles()});setTimeout(()=>{t.classList.add('hidden')},500)});
+
+        // Initialize Swiper
+        const swiper = new Swiper('.gallery-swiper', { loop: true, slidesPerView: 1, spaceBetween: 30, centeredSlides: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 768: { slidesPerView: 1.5, spaceBetween: 40 }, 1024: { slidesPerView: 2.5, spaceBetween: 50 } } });
+
+        // Initialize Fancybox
+        Fancybox.bind('[data-fancybox="gallery"]', { Thumbs: false, Toolbar: { display: { left: ["infobar"], middle: [], right: ["close"] } } });
+
+        // NOTE: No JavaScript is needed to handle the form submission itself,
+        // as the default 'mailto:' action will take care of opening the email client.
+
+    </script>
+
+</body>
+</html>
