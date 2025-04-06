@@ -123,7 +123,7 @@
                     <a href="#services" class="btn-shine btn-pulse bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-xl transition duration-300 transform hover:scale-105 inline-block">Explore Services <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
-            <a href="#services" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-4xl animate-bounce z-10"><i class="fas fa-chevron-down"></i></a>
+            <!-- Removed bouncing down arrow -->
         </section>
 
         <!-- Services Section -->
@@ -163,30 +163,34 @@
         <section id="about" class="py-20 bg-gray-800/50 backdrop-blur-sm">
              <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Why J.R. Shine?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
-                    <div data-aos="zoom-in" data-aos-delay="100"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-medal text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Unmatched Quality</h3> <p class="text-gray-400">We treat every vehicle like our own, using only the best products and meticulous techniques.</p> </div>
-                     <div data-aos="zoom-in" data-aos-delay="200"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-clock text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Convenient Service</h3> <p class="text-gray-400">Flexible scheduling and mobile options (if applicable) to fit your busy life.</p> </div>
-                     <div data-aos="zoom-in" data-aos-delay="300"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-leaf text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Eco-Friendly Options</h3> <p class="text-gray-400">We utilize water-saving techniques and eco-conscious products where possible.</p> </div>
-                    <div data-aos="zoom-in" data-aos-delay="400"> <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500"> <i class="fas fa-thumbs-up text-4xl text-blue-400"></i> </div> <h3 class="text-xl font-semibold text-white mb-2">Customer Satisfaction</h3> <p class="text-gray-400">Your happiness is our priority. We strive for 5-star reviews every time.</p> </div>
+                 <!-- Modified layout for 3 centered items -->
+                 <div class="flex flex-col md:flex-row justify-center items-start gap-10 lg:gap-16 text-center">
+                    <div class="w-full md:w-1/3 lg:w-1/4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500">
+                            <i class="fas fa-medal text-4xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Unmatched Quality</h3>
+                        <p class="text-gray-400">We treat every vehicle like our own, using only the best products and meticulous techniques.</p>
+                    </div>
+                     <div class="w-full md:w-1/3 lg:w-1/4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500">
+                             <i class="fas fa-clock text-4xl text-blue-400"></i>
+                         </div>
+                         <h3 class="text-xl font-semibold text-white mb-2">Convenient Service</h3>
+                         <p class="text-gray-400">Flexible scheduling and mobile options (if applicable) to fit your busy life.</p>
+                     </div>
+                    <div class="w-full md:w-1/3 lg:w-1/4" data-aos="zoom-in" data-aos-delay="300">
+                         <div class="bg-blue-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 border-2 border-blue-500">
+                             <i class="fas fa-thumbs-up text-4xl text-blue-400"></i>
+                         </div>
+                         <h3 class="text-xl font-semibold text-white mb-2">Customer Satisfaction</h3>
+                         <p class="text-gray-400">Your happiness is our priority. We strive for 5-star reviews every time.</p>
+                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process Section -->
-        <section class="py-20 bg-gray-900">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center text-white mb-12" data-aos="fade-up">Our Meticulous Process</h2>
-                <div class="relative">
-                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-500/30 transform -translate-x-1/2"></div>
-                    <div class="space-y-16">
-                         <div class="relative flex flex-col md:flex-row items-center" data-aos="fade-right"> <div class="md:w-1/2 md:pr-8 text-center md:text-right"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 1: Assessment & Prep</h3> <p class="text-gray-300">We inspect your vehicle's condition and carefully prepare surfaces for cleaning, masking sensitive areas.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-search text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pl-8"></div> </div>
-                         <div class="relative flex flex-col md:flex-row-reverse items-center" data-aos="fade-left"> <div class="md:w-1/2 md:pl-8 text-center md:text-left"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 2: Deep Cleaning</h3> <p class="text-gray-300">Thorough exterior wash, decontamination (clay bar), and meticulous interior vacuuming and scrubbing.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-soap text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pr-8"></div> </div>
-                         <div class="relative flex flex-col md:flex-row items-center" data-aos="fade-right"> <div class="md:w-1/2 md:pr-8 text-center md:text-right"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 3: Refinement & Protection</h3> <p class="text-gray-300">Polishing (if needed), applying wax, sealant, or ceramic coating. Conditioning interior surfaces.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-shield-alt text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pl-8"></div> </div>
-                         <div class="relative flex flex-col md:flex-row-reverse items-center" data-aos="fade-left"> <div class="md:w-1/2 md:pl-8 text-center md:text-left"> <h3 class="text-2xl font-semibold text-blue-400 mb-2">Step 4: Final Touches</h3> <p class="text-gray-300">Tire dressing, window perfection, final wipe-down, and quality inspection for flawless results.</p> </div> <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none mt-4 md:mt-0"> <div class="bg-gray-900 border-2 border-blue-500 rounded-full w-16 h-16 flex items-center justify-center z-10 relative"> <i class="fas fa-check-double text-2xl text-blue-500"></i> </div> </div> <div class="md:w-1/2 md:pr-8"></div> </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Process Section Removed -->
 
         <!-- FAQ Section -->
         <section class="py-20 bg-gray-800/50 backdrop-blur-sm">
@@ -210,14 +214,14 @@
                 <!-- Centered Form Container -->
                 <div class="w-full lg:w-2/3 mx-auto" data-aos="fade-up" data-aos-delay="100">
                     <!-- Form using mailto: action -->
-                    <form action="mailto:jrshinepburg@gmail.com?subject=Website%20Detailing%20Inquiry" method="post" enctype="text/plain" class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
+                    <form action="mailto:jrshinepburg@gmail.com?subject=Website%20Detailing%20Inquiry" class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
                          <div class="mb-5">
-                             <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Your Name</label>
-                             <input type="text" id="name" name="Name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="John Doe" required>
+                             <label for="form_name" class="block mb-2 text-sm font-medium text-gray-300">Your Name</label>
+                             <input type="text" id="form_name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="John Doe" required>
                          </div>
                         <div class="mb-5">
-                            <label for="service" class="block mb-2 text-sm font-medium text-gray-300">Service Interested In</label>
-                            <select id="service" name="Service_Interest" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400">
+                            <label for="form_service" class="block mb-2 text-sm font-medium text-gray-300">Service Interested In</label>
+                            <select id="form_service" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400">
                                  <option selected value="Not Specified">Choose a service</option>
                                  <option value="Interior Detail ($50)">Interior Detail ($50)</option>
                                  <option value="Exterior Detail ($50)">Exterior Detail ($50)</option>
@@ -228,17 +232,16 @@
                             </select>
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Your Message</label>
-                            <textarea id="message" name="Message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="Tell us about your car, preferred dates/times, or ask a question..."></textarea>
+                            <label for="form_message" class="block mb-2 text-sm font-medium text-gray-300">Your Message</label>
+                            <textarea id="form_message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400" placeholder="Tell us about your car, preferred dates/times, or ask a question..."></textarea>
                         </div>
                         <button type="submit" class="w-full btn-shine bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-800 transition duration-300">
                             Send Inquiry via Email <i class="fas fa-paper-plane ml-2"></i>
                         </button>
-                        <p class="text-xs text-gray-500 mt-4 text-center">
-                            Clicking 'Send' should open your default email application (like Outlook, Apple Mail, Gmail app) with the details pre-filled.
-                            <br> <strong class="text-gray-400">If nothing happens, please ensure you have a default email client configured in your browser or operating system settings.</strong>
-                            <br> Alternatively, you can manually email us at <a href="mailto:jrshinepburg@gmail.com" class="text-blue-400 hover:underline">jrshinepburg@gmail.com</a>.
-                        </p>
+                         <!-- Added back alternative email text -->
+                         <p class="text-xs text-gray-500 mt-4 text-center">
+                            Alternatively, you can email us directly at <a href="mailto:jrshinepburg@gmail.com" class="text-blue-400 hover:underline">jrshinepburg@gmail.com</a>.
+                         </p>
                     </form>
                 </div>
             </div>
@@ -250,12 +253,15 @@
     <footer class="bg-gray-900 text-gray-400 py-10">
         <div class="container mx-auto px-4 text-center">
              <a href="#" class="mb-4 inline-block"><img src="logo.png" alt="J.R. Shine Logo" class="h-12 w-auto mx-auto"></a>
+            <!-- Updated Social Links -->
             <div class="flex justify-center space-x-6 mb-6">
-                 <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-blue-500 transition duration-300 text-2xl"><i class="fab fa-facebook-f"></i></a>
-                 <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-pink-500 transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
-                 <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-sky-400 transition duration-300 text-2xl"><i class="fab fa-twitter"></i></a>
+                 <!-- Removed Facebook -->
+                 <a href="https://www.instagram.com/j.r_shine/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-400 hover:text-pink-500 transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
+                 <!-- Added TikTok -->
+                 <a href="https://www.tiktok.com/@profitzz_" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-gray-400 hover:text-white transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>
+                 <!-- Removed Twitter -->
             </div>
-            <p class="text-sm">© <span id="current-year"></span> J.R. Shine. All Rights Reserved. Website by [Your Name/Your Brother's Friend].</p>
+            <p class="text-sm">© <span id="current-year"></span> J.R. Shine. All Rights Reserved.</p>
              <p class="text-xs mt-2">Crafted with <i class="fas fa-heart text-red-500"></i> & lots of <i class="fas fa-code text-blue-400"></i></p>
         </div>
     </footer>
